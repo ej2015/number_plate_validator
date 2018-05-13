@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
 
 	spec.summary       = %q{This gem validates vehicle number/license plates. }
 	spec.description   = %q{This gem allows you to validate a license plate number from a chosen country/region.}
-  spec.homepage      = "public repo URL here"
+  spec.homepage      = "https://github.com/ej2015/number_plate_validator.git
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
