@@ -1,8 +1,6 @@
 # NumberPlateValidator
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/number_plate_validator`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+This gem provides a validator for license plate validation. At the moment it only supports Singapore plates with a checksum. But work is ongoing to expand it to special plates and other countries and regions.
 
 ## Installation
 
@@ -22,7 +20,15 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Initialize validator:
+   validator =  NumberPlateValidator.validator("SG")
+
+Check if it is valid:
+   validator.is_valid?("EJ81D")
+   ## true
+   
+   validator.is_valid?("EJ81E")
+   ## false
 
 ## Development
 
@@ -32,7 +38,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/number_plate_validator.
+Bug reports and pull requests are welcome on GitHub at https://github.com/ej2005/number_plate_validator.
 
 
 ## License
