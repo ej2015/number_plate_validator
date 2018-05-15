@@ -5,7 +5,9 @@ describe NumberPlateValidator do
     expect(NumberPlateValidator::VERSION).not_to be nil
   end
 
-  it "does something useful" do
-    expect(false).to eq(true)
-  end
+	describe "#validator" do
+    it "initializes a validator" do
+      expect(NumberPlateValidator.validator("SG").class).to be NumberPlateValidator::Validator
+    end
+	end
 end
