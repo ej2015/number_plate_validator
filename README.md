@@ -19,17 +19,34 @@ Or install it yourself as:
     $ gem install number_plate_validator
 
 ## Usage
+Use standard country code to spcify the country. 
 
-Initialize validator:
-   validator =  NumberPlateValidator.validator("SG")
+```
+  ##Initialize validator:
+  validator =  NumberPlateValidator.validator("SG")
 
-Check if it is valid:
-   validator.is_valid?("EJ81D")
-   ## true
+  ##Check if it is valid:
+  validator.is_valid?("EJ81D")
+  #=> true
    
-   validator.is_valid?("EJ81E")
-   ## false
+  validator.is_valid?("EJ81E")
+  #=> false
+```
 
+## ActiveModel
+
+A `NumberPlateValidator` is provided with this gem to be used with ActiveModel. You can specify the attribute with the country information with either a symbol or a Proc.
+
+```
+class Vehicle < ActiveRecord::Base
+  validates :plate_number, number_plate: { country: "SG" }  ##country is fixed to "SG"
+
+  ##or use either of the following to get the country from the attribute country_code
+  ##validates :plate_number, number_plate: { country: :country_code }  
+  ##validates :plate_number, number_plate: { country Proc.new { |obj| obj.country_code } }
+end
+
+```
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
