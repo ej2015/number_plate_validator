@@ -5,6 +5,8 @@ module ActiveModel
 				country = case(options[:country])
 									when Proc 
 										options[:country].call(record)
+									when Symbol
+										record.send(options[:country])
 									else 
 										options[:country]
 									end
