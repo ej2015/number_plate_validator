@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["zorro.ej@gmail.com"]
 
 	spec.summary       = %q{This gem validates vehicle number/license plates. }
-	spec.description   = %q{This gem allows you to validate a license plate number from a chosen country/region. It also provides a validator for ActiveModel. It currently only supports Singapore.}
+	spec.description   = %q{This gem allows you to validate a license plate number from a chosen country/region. It also provides a validator for ActiveModel and a CLI. It currently only supports Singapore and Malaysia (not exhaustive.}
   spec.homepage      = "https://github.com/ej2015/number_plate_validator.git"
   spec.license       = "MIT"
 

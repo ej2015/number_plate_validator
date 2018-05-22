@@ -4,6 +4,12 @@ describe NumberPlateValidator::MYValidator do
 
 	let(:validator) {described_class.new}
 
+	describe "#country" do
+		it "returns MY" do
+			expect(validator.country).to eq "MY"
+		end
+	end
+
 	describe "#is_valid?" do
 		it "returns true for hwd378" do
 			expect(validator.is_valid? "hwd378").to eq true

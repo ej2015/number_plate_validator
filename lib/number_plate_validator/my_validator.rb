@@ -1,5 +1,5 @@
 module NumberPlateValidator 
-	class MYValidator
+	class MYValidator < CountryValidatorBase
 
     PATTERNS = [
       /^[A,B,C,D,F,J,K,M,N,P,R,T,V][A-Y]{0,2}([1-9]|[1-9][0-9]|[1-9][0-9][0-9]|[1-9][0-9][0-9][0-9])$/,
@@ -16,11 +16,13 @@ module NumberPlateValidator
 			/^LIMO([1-9]|[1-9][0-9]|[1-9][0-9][0-9]|[1-9][0-9][0-9][0-9])[W,B]$/
 		]
 
+		def initialize
+      @country = "MY"
+		end
 
 		def is_valid?(registration_number)
-			license = registration_number.gsub(/\s/, "").upcase if registration_number.present?
-			return false if license.blank?
-      PATTERNS.any? { |pattern| license =~ pattern } 
+			return false unless super
+      PATTERNS.any? { |pattern| @license =~ pattern } 
 		end
 
   end

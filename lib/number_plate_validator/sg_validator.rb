@@ -1,18 +1,22 @@
 module NumberPlateValidator 
-	class SGValidator
+	class SGValidator < CountryValidatorBase
 		CHECK_SUM = { 0 => "A", 1 => "Z", 2 => "Y", 3 => "X", 4 => "U", 5 => "T", 6 => "S", 7 => "R", 8 => "P", 9 => "M", 10 => "L", 11 => "K", 12 => "J", 13 => "H", 14 => "G", 15 => "E", 16 => "D", 17 => "C", 18 => "B" }
 		MULTIPLIER = [9, 4, 5, 4, 3, 2]
 
+		def initialize
+      @country = "SG"
+		end
+
 		def is_valid?(registration_number)
-			license = registration_number.gsub(/\s/, "").upcase if registration_number.present?
-			return false if license.blank? || license.length > 8 || license.length < 4
-			test = /^[A-Z]{1,3}[1-9]{1}\d{0,3}[A-Z]$/ =~ license
+			return false unless super
+			return false if @license.length > 8 || @license.length < 4
+			test = /^[A-Z]{1,3}[1-9]{1}\d{0,3}[A-Z]$/ =~ @license
 			return false unless test == 0
-			letters = license[/[A-Z]+/]
-			numerals = license[/\d+/]
+			letters = @license[/[A-Z]+/]
+			numerals = @license[/\d+/]
 
 			checksum = get_checksum(letters, numerals)
-			checksum == license[-1]
+			checksum == @license[-1]
 		end
 
 		def get_checksum(letters, numerals)

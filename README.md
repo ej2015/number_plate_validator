@@ -1,6 +1,12 @@
 # NumberPlateValidator
 
-This gem provides a validator for license plate validation. At the moment it only supports Singapore plates with a checksum. But work is ongoing to expand it to special plates and other countries and regions.
+This gem provides a validator for license plate validation. It iss being actively developed to expand to special plates and more countries and regions. Contributions are welcome.
+
+## Country Support
+
+Singapore: checksumed plates
+Malaysia: Not exhaustive. Please check the specs for examples of covered cases
+
 
 ## Installation
 
@@ -31,6 +37,10 @@ Use standard country code to spcify the country.
    
   validator.is_valid?("EJ81E")
   #=> false
+
+  ##get the current country code
+  validator.country
+  #=> "SG"
 ```
 
 ## ActiveModel
@@ -47,6 +57,16 @@ class Vehicle < ActiveRecord::Base
 end
 
 ```
+
+## Command Line Interface
+A CLI is provided to check the plate validity
+
+```
+$number_plate validate -c SG EJ81E
+$true
+
+```
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
