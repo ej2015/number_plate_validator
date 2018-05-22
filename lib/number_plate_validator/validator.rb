@@ -1,12 +1,10 @@
 module NumberPlateValidator
 	class Validator 
 
-		attr_reader :region, :validator
+		attr_reader :validator
 
-		def initialize(region)
-			@region = region
-			validator_class = eval "NumberPlateValidator::#{region}Validator"
-			@validator = validator_class.new
+		def initialize(validator)
+			@validator = validator 
 		end
 
 		def is_valid?(registration_number)
