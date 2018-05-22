@@ -3,10 +3,8 @@ module NumberPlateValidator
 		CHECK_SUM = { 0 => "A", 1 => "Z", 2 => "Y", 3 => "X", 4 => "U", 5 => "T", 6 => "S", 7 => "R", 8 => "P", 9 => "M", 10 => "L", 11 => "K", 12 => "J", 13 => "H", 14 => "G", 15 => "E", 16 => "D", 17 => "C", 18 => "B" }
 		MULTIPLIER = [9, 4, 5, 4, 3, 2]
 
-		attr_reader :license
-
 		def is_valid?(registration_number)
-			@license = registration_number.gsub(/\s/, "").upcase if registration_number.present?
+			license = registration_number.gsub(/\s/, "").upcase if registration_number.present?
 			return false if license.blank? || license.length > 8 || license.length < 4
 			test = /^[A-Z]{1,3}[1-9]{1}\d{0,3}[A-Z]$/ =~ license
 			return false unless test == 0
@@ -34,8 +32,7 @@ module NumberPlateValidator
 				numbers = [1] + numbers
 			end
 
-			numerals = "000" + numerals
-			numerals = numerals[-4,4]
+			numerals = ("000" + numerals)[-4,4]
 			numbers + numerals.split(//).map(&:to_i)
 		end
 
