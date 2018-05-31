@@ -8,18 +8,14 @@ module NumberPlateValidator
 		end
 
 		def is_valid?(registration_number)
-			return false unless super
-			return false if @license.length > 8 || @license.length < 4
-			test = /^[A-Z]{1,3}[1-9]{1}\d{0,3}[A-Z]$/ =~ @license
-			return false unless test == 0
-			letters = @license[/[A-Z]+/]
-			numerals = @license[/\d+/]
-
-			checksum = get_checksum(letters, numerals)
+			return false unless super &&  valid_length? && valid_pattern?
+			checksum = get_checksum
 			checksum == @license[-1]
 		end
 
-		def get_checksum(letters, numerals)
+		def get_checksum
+			letters = @license[/[A-Z]+/]
+			numerals = @license[/\d+/]
 			numbers = get_numbers(letters, numerals)
 			get_checksum_from_numbers(numbers)
 		end
@@ -46,5 +42,14 @@ module NumberPlateValidator
 			checksum_key = checksum_array.reduce(:+) % 19
 			CHECK_SUM[checksum_key]
 		end
+
+	    private
+	    def valid_length?
+	    	@license.length <= 8 && @license.length >= 4
+	    end
+
+	    def valid_pattern?
+	    	0  == (/^[A-Z]{1,3}[1-9]{1}\d{0,3}[A-Z]$/ =~ @license)
+	    end
 	end
 end
