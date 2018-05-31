@@ -11,7 +11,7 @@ module NumberPlateValidator
 			super &&  
 				valid_length? && 
 				valid_pattern? &&
-			  get_checksum == @license[-1]
+				valid_checksum?
 		end
 
 		def get_checksum
@@ -52,5 +52,9 @@ module NumberPlateValidator
 	    def valid_pattern?
 	    	0  == (/^[A-Z]{1,3}[1-9]{1}\d{0,3}[A-Z]$/ =~ @license)
 	    end
+
+			def valid_checksum?
+			  get_checksum == @license[-1]
+			end
 	end
 end
