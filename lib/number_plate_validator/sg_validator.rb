@@ -8,9 +8,10 @@ module NumberPlateValidator
 		end
 
 		def is_valid?(registration_number)
-			return false unless super &&  valid_length? && valid_pattern?
-			checksum = get_checksum
-			checksum == @license[-1]
+			super &&  
+				valid_length? && 
+				valid_pattern? &&
+			  get_checksum == @license[-1]
 		end
 
 		def get_checksum
