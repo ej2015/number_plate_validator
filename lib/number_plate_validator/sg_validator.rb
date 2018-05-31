@@ -8,8 +8,8 @@ module NumberPlateValidator
 		end
 
 		def is_valid?(registration_number)
-			super &&  
-				valid_length? && 
+			super &&
+				valid_length? &&
 				valid_pattern? &&
 				valid_checksum?
 		end
