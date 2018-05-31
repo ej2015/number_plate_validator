@@ -1,5 +1,6 @@
 # NumberPlateValidator
 [![CodeFactor](https://www.codefactor.io/repository/github/ej2015/number_plate_validator/badge)](https://www.codefactor.io/repository/github/ej2015/number_plate_validator)
+[![Maintainability](https://api.codeclimate.com/v1/badges/cfd4ee89c46c6b642a09/maintainability)](https://codeclimate.com/github/ej2015/number_plate_validator/maintainability)
 [![Build Status](https://travis-ci.org/ej2015/number_plate_validator.svg?branch=master)](https://travis-ci.org/ej2015/number_plate_validator)
 
 This gem provides a validator for license plate validation. It iss being actively developed to expand to special plates and more countries and regions. Contributions are welcome.
