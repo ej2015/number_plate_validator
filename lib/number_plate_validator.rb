@@ -12,11 +12,10 @@ module NumberPlateValidator
 
 	class << self
     def validator(country_code)
-			validator_class = eval "NumberPlateValidator::#{country_code}Validator"
+			validator_class = Object.const_get "NumberPlateValidator::#{country_code}Validator"
 			validator = validator_class.new
 			Validator.new(validator)
 		end
 	end
-	
 end
 

@@ -14,7 +14,7 @@ if defined?(ActiveModel)
 		validates :plate, number_plate: { country: Proc.new { |obj| obj.country } }
 	end
 
-	describe Vehicle do	
+	describe Vehicle do
 		it "is valid with valid plate from Country" do
 			vehicle = Vehicle.new("SG", "SCK38Z")
 			expect(vehicle).to be_valid
@@ -38,7 +38,7 @@ if defined?(ActiveModel)
 		end
 	end
 
-	describe VehicleWithCountry do	
+	describe VehicleWithCountry do
 		it "is valid with valid plate from Country" do
 			vehicle = VehicleWithCountryProc.new("SG", "SCK38Z")
 			expect(vehicle).to be_valid

@@ -1,4 +1,4 @@
-module NumberPlateValidator 
+module NumberPlateValidator
 	class SGValidator < CountryValidatorBase
 		CHECK_SUM = { 0 => "A", 1 => "Z", 2 => "Y", 3 => "X", 4 => "U", 5 => "T", 6 => "S", 7 => "R", 8 => "P", 9 => "M", 10 => "L", 11 => "K", 12 => "J", 13 => "H", 14 => "G", 15 => "E", 16 => "D", 17 => "C", 18 => "B" }
 		MULTIPLIER = [9, 4, 5, 4, 3, 2]

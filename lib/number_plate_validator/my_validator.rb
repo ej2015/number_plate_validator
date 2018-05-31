@@ -1,4 +1,4 @@
-module NumberPlateValidator 
+module NumberPlateValidator
 	class MYValidator < CountryValidatorBase
 
     PATTERNS = [
@@ -22,7 +22,7 @@ module NumberPlateValidator
 
 		def is_valid?(registration_number)
 			return false unless super
-      PATTERNS.any? { |pattern| @license =~ pattern } 
+      PATTERNS.any? { |pattern| @license =~ pattern }
 		end
 
   end

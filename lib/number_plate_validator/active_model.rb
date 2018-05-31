@@ -1,9 +1,9 @@
-module ActiveModel 
+module ActiveModel
   module Validations
 		class NumberPlateValidator < ActiveModel::EachValidator
 			def validate_each(record, attribute, value)
 				country = case(options[:country])
-									when Proc 
+									when Proc
 										options[:country].call(record)
 									when Symbol
 										record.send(options[:country])
