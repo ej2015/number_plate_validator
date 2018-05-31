@@ -7,7 +7,7 @@ module ActiveModel
 										options[:country].call(record)
 									when Symbol
 										record.send(options[:country])
-									else 
+									else
 										options[:country]
 									end
 

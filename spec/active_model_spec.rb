@@ -26,7 +26,7 @@ if defined?(ActiveModel)
 		end
 	end
 
-	describe VehicleWithCountry do	
+	describe VehicleWithCountry do
 		it "is valid with valid plate from Country" do
 			vehicle = VehicleWithCountry.new("SG", "SCK38Z")
 			expect(vehicle).to be_valid
