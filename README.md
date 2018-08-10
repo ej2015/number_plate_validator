@@ -65,7 +65,7 @@ end
 A CLI is provided to check the plate validity
 
 ```
-$number_plate validate -c SG EJ81E
+$number_plate validate -c SG EJ81D
 $true
 
 ```
