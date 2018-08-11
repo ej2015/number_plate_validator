@@ -14,14 +14,13 @@ module NumberPlateValidator
         valid_checksum?
     end
 
-    def get_checksum
+    def checksum
       letters = @license[/[A-Z]+/]
       numerals = @license[/\d+/]
-      numbers = get_numbers(letters, numerals)
-      get_checksum_from_numbers(numbers)
+      get_checksum_from_message(message letters, numerals)
     end
 
-    def get_numbers(letters, numerals)
+    def message(letters, numerals)
       numbers = []
       letters.split(//).each do |alphebat|
         numbers << (alphebat.ord - 64)
@@ -37,7 +36,7 @@ module NumberPlateValidator
       numbers + numerals.split(//).map(&:to_i)
     end
 
-    def get_checksum_from_numbers(numbers)
+    def get_checksum_from_message(numbers)
       checksum_array = []
       numbers.zip(MULTIPLIER) { |x, y| checksum_array << (x * y) }
       checksum_key = checksum_array.reduce(:+) % 19
@@ -54,7 +53,7 @@ module NumberPlateValidator
     end
 
     def valid_checksum?
-      get_checksum == @license[-1]
+      checksum == @license[-1]
     end
   end
 end
